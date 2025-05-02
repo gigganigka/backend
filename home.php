@@ -47,6 +47,7 @@ if (isset($_POST['add_to_cart'])) {
   include 'user_header.php';
   ?>
 
+
   <section class="home_cont">
     <div class="main_descrip">
       <h1>The Bookshelf</h1>

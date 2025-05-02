@@ -73,7 +73,42 @@ if(isset($_POST['update_product'])){
   header('location:admin_products.php');
 }
 
+$products = mysqli_query($conn, "SELECT products.*, register.name AS seller_name 
+FROM products 
+LEFT JOIN register ON products.seller_id = register.id") or die('query failed');
 ?>
+
+<div class="container my-4">
+   <h3>All Books</h3>
+   <table class="table table-bordered">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Seller</th>
+            <th>Status</th>
+            <th>Actions</th>
+         </tr>
+      </thead>
+      <tbody>
+         <?php while($row = mysqli_fetch_assoc($products)): ?>
+         <tr>
+            <td><?= htmlspecialchars($row['name']) ?></td>
+            <td><?= $row['price'] ?> тг</td>
+            <td><?= htmlspecialchars($row['seller_name'] ?? '—') ?></td>
+            <td>
+               <?= $row['approved'] ? '✅ Approved' : '⏳ Pending' ?>
+            </td>
+            <td>
+               <?php if (!$row['approved']): ?>
+                  <a href="admin_approve_product.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-success">Approve</a>
+               <?php endif; ?>
+            </td>
+         </tr>
+         <?php endwhile; ?>
+      </tbody>
+   </table>
+  </div>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -122,7 +157,7 @@ include 'admin_header.php';
       <?php echo $fetch_products['name'];?>
       </div>
 
-      <div class="product_price">Rs. 
+      <div class="product_price">Tg. 
       <?php echo $fetch_products['price'];?> /-
       </div>
 

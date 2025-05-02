@@ -38,6 +38,8 @@ if(isset($message)){
           <a class="fa-solid fa-magnifying-glass" href="search_page.php"></a>
 
           <div class="fas fa-user" id="user_btn"></div>
+          <a href="favorites.php" title="Favorites"><i class="fas fa-heart"></i></a>
+
           <?php
           $select_cart_number=mysqli_query($conn,"SELECT * FROM `cart` where user_id='$user_id'") or die('query failed');
           $cart_row_number=mysqli_num_rows($select_cart_number);

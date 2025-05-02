@@ -15,7 +15,6 @@ if (mysqli_num_rows($check_product) != 1) {
     exit();
 }
 
-// Удаляем сам продукт
 mysqli_query($conn, "DELETE FROM products WHERE id = $product_id") or die('delete failed');
 
 header('location:seller_products.php');

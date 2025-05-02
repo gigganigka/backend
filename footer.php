@@ -26,6 +26,7 @@
       <a href="register.php">Register</a>
       <a href="cart.php">Cart</a>
       <a href="orders.php">Orders</a>
+      <a href="favorites.php">Favorites</a>
     </div>
   </div>
   <p> 2024 <span>Talgatov Daryn | All Rights Reserved.</span></p>
