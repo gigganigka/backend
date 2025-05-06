@@ -101,6 +101,15 @@ include 'admin_header.php';
 
     <div class="admin_box">
       <?php
+        $select_users=mysqli_query($conn,"SELECT * FROM `register` WHERE user_type='seller'") or die('query failed');
+        $number_of_users=mysqli_num_rows($select_users);
+      ?>
+      <h3><?php echo $number_of_users; ?></h3>
+      <p>Seller Present</p>
+    </div>
+
+    <div class="admin_box">
+      <?php
         $select_accounts=mysqli_query($conn,"SELECT * FROM `register`") or die('query failed');
         $number_of_accounts=mysqli_num_rows($select_accounts);
       ?>
