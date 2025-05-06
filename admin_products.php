@@ -97,8 +97,15 @@ LEFT JOIN register ON products.seller_id = register.id") or die('query failed');
             <td><?= $row['price'] ?> тг</td>
             <td><?= htmlspecialchars($row['seller_name'] ?? '—') ?></td>
             <td>
-               <?= $row['approved'] ? '✅ Approved' : '⏳ Pending' ?>
-            </td>
+            <?php if ($row['approved'] == 0): ?>
+            <a href="admin_approve_product.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-success">Approve</a>
+            <a href="admin_reject_product.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger">Reject</a>
+            <?php elseif ($row['approved'] == -1): ?>
+            <span class="text-danger">❌ Rejected</span>
+            <?php else: ?>
+            <span class="text-success">✅ Approved</span>
+            <?php endif; ?>
+          </td>
             <td>
                <?php if (!$row['approved']): ?>
                   <a href="admin_approve_product.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-success">Approve</a>

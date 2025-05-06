@@ -65,19 +65,6 @@ if (isset($_POST['add_to_cart'])) {
         while ($fetch_products = mysqli_fetch_assoc($select_products)) {
 
       ?>
-          <form action="" method="post" class="pro_box">
-            <img src="./uploaded_img/<?php echo $fetch_products['image']; ?>" alt="">
-            <h3><?php echo $fetch_products['name']; ?></h3>
-            <p>Tg. <?php echo $fetch_products['price']; ?>/-</p>
-          
-            <input type="hidden" name="product_name" value="<?php echo $fetch_products['name'] ?>">
-            <input type="number" name="product_quantity" min="1" value="1">
-            <input type="hidden" name="product_price" value="<?php echo $fetch_products['price']; ?>">
-            <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">
-
-            <input type="submit" value="Add to Cart" name="add_to_cart" class="product_btn">
-
-          </form>
 
       <?php
         }

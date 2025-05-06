@@ -1,7 +1,6 @@
 <?php
 include 'config.php';
 include 'seller_header.php';
-// session_start();
 ?>
 <div class="container my-4">
    <h3>Welcome, Seller!</h3>
